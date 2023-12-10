@@ -1,0 +1,83 @@
+﻿
+@model AMT_Company.Models.User
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<div class="d-flex justify-content-center" style="margin-bottom: 100px">
+            @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="">
+                    <h4 class="">Register Customer</h4>
+                </div>
+                <div class="">
+                    <div class="form-group mb-2">
+                        @Html.LabelFor(m => m.Username)
+                        @Html.TextBoxFor(m => m.Username, "", new { @class = "form-control", @placeholder = "Username" })
+                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "badge badge-danger text-danger" })
+                    </div>
+                    <div class="form-group mb-2">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "badge badge-danger text-danger" })
+                    </div>
+                    <div class="form-group mb-2">
+                        @Html.LabelFor(m => m.ConfirmPassword)
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "badge badge-danger text-danger" })
+                    </div>
+                    <div class="form-group mb-2">
+                        @Html.LabelFor(m => m.Fullname)
+                        @Html.TextBoxFor(m => m.Fullname, "", new { @class = "form-control", @placeholder = "Fullname" })
+                        @Html.ValidationMessageFor(m => m.Fullname, "", new { @class = "badge badge-danger text-danger" })
+                    </div>
+                    <div class="form-group mb-2">
+                        @Html.LabelFor(m => m.Birthday)
+                        @* <input type="date" name="Avatar" class="form-control" placeholder="Birthday" /> *@
+                        @Html.TextBoxFor(m => m.Birthday, "", new { @class = "form-control", @placeholder = "Fullname", type = "date" })
+                        @Html.ValidationMessageFor(m => m.Birthday, "", new { @class = "badge badge-danger text-danger" })
+                    </div>
+                    <div class="form-group mb-2">
+                        <input type="hidden" name="Avatar" value="filed" />
+                        @Html.LabelFor(m => m.Avatar)
+                        @Html.TextBox("file", "", new { @class = "form-control", type = "file"})
+                        @* <input class="form-control" type="file" name="file" required/> *@
+                        @Html.ValidationMessageFor(m => m.Avatar, "", new { @class = "badge badge-danger text-danger" })
+                    </div>
+                    <div class="form-group mb-2">
+                        <input type="radio" class="ms-2" name="Gender" value="male" checked> Male
+                        <input type="radio" class="ms-2" name="Gender" value="female"> Female
+                        <input type="radio" class="ms-2" name="Gender" value="other"> Other
+                    </div>
+                    <div class="form-group mb-2">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge badge-danger text-danger" })
+                    </div>
+                    <div class="form-group mb-2">
+                        @Html.LabelFor(m => m.Phone)
+                        @Html.TextBoxFor(m => m.Phone, "", new { @class = "form-control", @placeholder = "Phone" })
+                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "badge badge-danger text-danger" })
+                    </div>
+                    <div class="form-group mb-2">
+                        @Html.LabelFor(m => m.Address)
+                        @Html.TextBoxFor(m => m.Address, "", new { @class = "form-control", @placeholder = "Address" })
+                        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "badge badge-danger text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <a href="/" class="btn btn-default" role="button">Cancel</a>
+                        <input type="submit" class="btn btn-success" name="submit" value="Create">
+                    </div>
+                </div>
+
+                @* <div class="modal-footer">
+                    <a href="/" class="btn btn-default" role="button">Cancel</a>
+                    <input type="submit" class="btn btn-success" name="submit" value="Create">
+                </div> *@
+            }
+</div>
